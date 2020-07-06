@@ -1,25 +1,14 @@
 /*
- * MIT License
- * Copyright 2018 Bolukan
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
-/*
  * I2C Scanner
  * Scans 7-bit address space
  * https://www.nxp.com/docs/en/user-guide/UM10204.pdf
  */
 
+// **************************************** compiler ****************************************
+#define APPNAME "Watchdog for MQTT Sensor/+/Action messages"
+#include <version.h> // include BUILD_NUMBER, VERSION, VERSION_SHORT
+
+// **************************************** include ****************************************
 #include <Arduino.h>
 
 // TwoWire.h - TWI/I2C library for Arduino & Wiring
@@ -34,6 +23,8 @@
 #define I2C_ERROR_NACK_ON_TRANSMIT_OF_DATA      3
 #define I2C_ERROR_OTHER_ERROR                   4
 
+// **************************************** functions ****************************************
+
 /*
  *   Convert byte to hex '0x00'
  */
@@ -47,9 +38,12 @@ char* ByteToHexChar(byte b)
 
 void setup()
 {
-  // Serial
+  // serial
   Serial.begin(115200);
-  Serial.println("\nI2C Scanner");
+  Serial.println();
+  Serial.println(APPNAME);
+  Serial.println(VERSION);
+  Serial.println();
 
   // I2C
   Wire.begin();

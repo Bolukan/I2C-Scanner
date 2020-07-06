@@ -1,5 +1,6 @@
-.pioenvs
-.piolibdeps
 .clang_complete
 .gcc-flags.json
+
 secrets.h
+.vscode
+.pio
